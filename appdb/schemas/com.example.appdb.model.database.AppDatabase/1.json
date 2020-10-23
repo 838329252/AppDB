@@ -1,0 +1,339 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "214b1b9a5e72245d1d1636de17b4b13a",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uNickName` TEXT NOT NULL, `uHeadPortrait` TEXT, `uSex` INTEGER NOT NULL, `uIP` TEXT, `uStatus` INTEGER NOT NULL, `uRemark` TEXT, PRIMARY KEY(`uNickName`))",
+        "fields": [
+          {
+            "fieldPath": "uNickName",
+            "columnName": "uNickName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uHeadPortrait",
+            "columnName": "uHeadPortrait",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "uSex",
+            "columnName": "uSex",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uIP",
+            "columnName": "uIP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "uStatus",
+            "columnName": "uStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uRemark",
+            "columnName": "uRemark",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uNickName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Friend",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fID` TEXT NOT NULL, `fDeleteStatus` INTEGER NOT NULL, `uNickName` TEXT, `uHeadPortrait` TEXT, `uSex` INTEGER, `uIP` TEXT, `uStatus` INTEGER, `uRemark` TEXT, PRIMARY KEY(`fID`))",
+        "fields": [
+          {
+            "fieldPath": "fID",
+            "columnName": "fID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fDeleteStatus",
+            "columnName": "fDeleteStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fUser.uNickName",
+            "columnName": "uNickName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fUser.uHeadPortrait",
+            "columnName": "uHeadPortrait",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fUser.uSex",
+            "columnName": "uSex",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fUser.uIP",
+            "columnName": "uIP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fUser.uStatus",
+            "columnName": "uStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fUser.uRemark",
+            "columnName": "uRemark",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "fID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "NewFriend",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`nfID` TEXT NOT NULL, `uNickName` TEXT, `uHeadPortrait` TEXT, `uSex` INTEGER, `uIP` TEXT, `uStatus` INTEGER, `uRemark` TEXT, PRIMARY KEY(`nfID`))",
+        "fields": [
+          {
+            "fieldPath": "nfID",
+            "columnName": "nfID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nfUser.uNickName",
+            "columnName": "uNickName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nfUser.uHeadPortrait",
+            "columnName": "uHeadPortrait",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nfUser.uSex",
+            "columnName": "uSex",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nfUser.uIP",
+            "columnName": "uIP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nfUser.uStatus",
+            "columnName": "uStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nfUser.uRemark",
+            "columnName": "uRemark",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "nfID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "FriendRequest",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`frID` TEXT NOT NULL, `frRequestContent` TEXT, `uNickName` TEXT, `uHeadPortrait` TEXT, `uSex` INTEGER, `uIP` TEXT, `uStatus` INTEGER, `uRemark` TEXT, PRIMARY KEY(`frID`))",
+        "fields": [
+          {
+            "fieldPath": "frID",
+            "columnName": "frID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frRequestContent",
+            "columnName": "frRequestContent",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uNickName",
+            "columnName": "uNickName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uHeadPortrait",
+            "columnName": "uHeadPortrait",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uSex",
+            "columnName": "uSex",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uIP",
+            "columnName": "uIP",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uStatus",
+            "columnName": "uStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frUser.uRemark",
+            "columnName": "uRemark",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "frID"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Message",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mFriendID` TEXT NOT NULL, `mSendOrReceive` INTEGER NOT NULL, `mTime` TEXT, `mMessageType` INTEGER NOT NULL, `mText` TEXT, `mPicture` TEXT, `mPictureThumbnail` TEXT, `mReadStatus` INTEGER NOT NULL, `mSendStatus` INTEGER NOT NULL, FOREIGN KEY(`mFriendID`) REFERENCES `Friend`(`fID`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "mID",
+            "columnName": "mID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mFriendID",
+            "columnName": "mFriendID",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mSendOrReceive",
+            "columnName": "mSendOrReceive",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mTime",
+            "columnName": "mTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mMessageType",
+            "columnName": "mMessageType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mText",
+            "columnName": "mText",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mPicture",
+            "columnName": "mPicture",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mPictureThumbnail",
+            "columnName": "mPictureThumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mReadStatus",
+            "columnName": "mReadStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mSendStatus",
+            "columnName": "mSendStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "mID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Message_mFriendID",
+            "unique": false,
+            "columnNames": [
+              "mFriendID"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Message_mFriendID` ON `${TABLE_NAME}` (`mFriendID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Friend",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mFriendID"
+            ],
+            "referencedColumns": [
+              "fID"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '214b1b9a5e72245d1d1636de17b4b13a')"
+    ]
+  }
+}
