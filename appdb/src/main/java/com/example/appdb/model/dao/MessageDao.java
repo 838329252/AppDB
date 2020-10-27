@@ -40,8 +40,8 @@ public interface MessageDao {
     @Query("SELECT * FROM Message" +
             " WHERE mFriendID=:id " +
             "ORDER BY mID DESC " +
-            "LIMIT :offset*:num,:num")
-    public List<Message> getFriendMessageList(String id, int num, int offset);
+            "LIMIT :fromNum,:num")
+    public List<Message> getFriendMessageList(String id, int num, int fromNum);
 
     @Query("SELECT * FROM Message " +
             "WHERE mFriendID=:id "+

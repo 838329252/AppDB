@@ -18,7 +18,7 @@ public class Message {
     @NonNull
     private String mFriendID;                    //好友设备ID
     private int mSendOrReceive;                  //发送或接收标志位，接收1，发送0
-    private String mTime;                        //消息时间
+    private long mTime;                        //消息时间
     private int mMessageType;                    //消息类型，文本1，图片0
     private String mText;                        //文本内容
     private String mPicture;                     //原图路径
@@ -51,11 +51,11 @@ public class Message {
         this.mSendOrReceive = mSendOrReceive;
     }
 
-    public String getMTime() {
+    public long getMTime() {
         return mTime;
     }
 
-    public void setMTime(String mTime) {
+    public void setMTime(long mTime) {
         this.mTime = mTime;
     }
 

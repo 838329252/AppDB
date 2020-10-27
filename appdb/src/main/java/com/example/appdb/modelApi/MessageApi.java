@@ -49,7 +49,7 @@ public class MessageApi {
 
     //编号：401；说明：向表中新增一项文本聊天内容（用字段传入）
     public static void insertOneTextMessageToList(final String m_FriendID,final int m_SendOrReceive,
-        final String m_Time, final int m_MessageType, final String m_Text, final int m_ReadStatus,
+        final long m_Time, final int m_MessageType, final String m_Text, final int m_ReadStatus,
         final int m_SendStatus,final ExecuteCallback callback){
         initMessageDao();
         mThreadPool.execute(new Runnable() {
@@ -76,7 +76,7 @@ public class MessageApi {
 
     //编号：402；说明：向表中新增一项图片聊天内容（用字段传入）
     public static void insertOnePictureMessageToList(final String m_FriendID,final int m_SendOrReceive,
-        final String m_Time, final int m_MessageType, final String m_Picture,final String m_PictureThumbnail,
+        final long m_Time, final int m_MessageType, final String m_Picture,final String m_PictureThumbnail,
         final int m_ReadStatus, final int m_SendStatus,final ExecuteCallback callback){
         initMessageDao();
         mThreadPool.execute(new Runnable() {
@@ -213,15 +213,15 @@ public class MessageApi {
         });
     }
 
-    //编号：408；说明：获得与某个聊天对象的num条聊天信息，可基于偏置offset的值设定获取第几块num条消息。
-    // 例如：offset=0，num=50,得到1-50条消息；offset=1,得到51-100条消息，以此类推
+    //编号：408；说明：获得与某个聊天对象的num条聊天信息，可基于fromNum的值设定获取[fromNum+1,fromNum+num]区间的消息。
+    // 例如：fromNum=0，num=50,得到1-50条消息；fromNum=50,num=50,得到51-100条消息，以此类推
     public static void getFriendMessageList(final String m_FriendID, final int num,
-                                            final int offset, final FriendMessageListCallback callback){
+                                            final int fromNum, final FriendMessageListCallback callback){
         initMessageDao();
         mThreadPool.execute(new Runnable() {
             @Override
             public void run() {
-                List<Message> messages=messageDao.getFriendMessageList(m_FriendID,num,offset);
+                List<Message> messages=messageDao.getFriendMessageList(m_FriendID,num,fromNum);
                 if(messages!=null){
                     callback.onFriendMessageList(true,messages);
                 }else{
