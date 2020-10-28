@@ -30,6 +30,9 @@ public interface MessageDao {
     @Query("SELECT * FROM Message WHERE mID=:id")
     public Message getMessageInfo(int id);
 
+    @Query("SELECT*FROM Message WHERE mTime=:time")
+    public Message getMessageInfoByTime(long time);
+
     @Query("SELECT * FROM (SELECT * FROM Message ORDER BY mID)A " +
             "GROUP BY mFriendID")
     public List<Message> getChatList();

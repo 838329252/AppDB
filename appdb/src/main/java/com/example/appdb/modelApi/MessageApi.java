@@ -134,7 +134,6 @@ public class MessageApi {
                 }else{
                     callback.onExecute(false);
                 }
-
             }
         });
     }
@@ -184,6 +183,27 @@ public class MessageApi {
                     callback.onExecute(false);
                 }
 
+            }
+        });
+    }
+    //编号412;说明：基于消息发送时间找到该消息后，更新其发送成功或失败标志位
+    public static void updateSendStatus(final long m_Time,final int m_SendStatus,final ExecuteCallback callback){
+        initMessageDao();
+        mThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                Message m=messageDao.getMessageInfoByTime(m_Time);
+                if(m!=null){
+                    m.setMSendStatus(m_SendStatus);
+                    int result=messageDao.updateMessageInfo(m);
+                    if(result!=0){
+                        callback.onExecute(true);
+                    }else{
+                        callback.onExecute(false);
+                    }
+                }else{
+                    callback.onExecute(false);
+                }
             }
         });
     }
