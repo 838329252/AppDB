@@ -17,8 +17,7 @@ public class InitDatabase {
         mContext=context;
         //数据库初始化
         if(mAppDb == null){
-            Log.d("initDatebase","测试是否创建了数据库");
-            mAppDb = Room.databaseBuilder(mContext, AppDatabase.class,"gochatdb").build();}
+            mAppDb = Room.databaseBuilder(mContext, AppDatabase.class,"gochat.db").build();}
     }
     public static AppDatabase getAppDB(){
         return mAppDb;
