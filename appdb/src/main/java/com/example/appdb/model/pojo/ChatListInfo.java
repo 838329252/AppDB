@@ -6,6 +6,7 @@ import com.example.appdb.model.entity.User;
 public class ChatListInfo {
     private Message message;
     private User user;
+    private int unreadNum;
 
     public Message getMessage() {
         return message;
@@ -21,5 +22,13 @@ public class ChatListInfo {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getUnreadNum() {
+        return unreadNum;
+    }
+
+    public void setUnreadNum(int unreadNum) {
+        this.unreadNum = unreadNum;
     }
 }

@@ -220,9 +220,11 @@ public class MessageApi {
                 if(messages!=null){
                     for(Message m:messages){
                         User u=friendDao.getFriendInfo(m.getMFriendID()).getFUser();
+                        int unreadNum=messageDao.getUnreadMessageNum(m.getMFriendID());
                         ChatListInfo chatListInfo=new ChatListInfo();
                         chatListInfo.setUser(u);
                         chatListInfo.setMessage(m);
+                        chatListInfo.setUnreadNum(unreadNum);
                         list.add(chatListInfo);
                     }
                     callback.onChatList(true,list);
