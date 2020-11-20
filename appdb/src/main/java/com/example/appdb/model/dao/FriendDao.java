@@ -22,6 +22,9 @@ public interface FriendDao {
     @Query("SELECT * FROM Friend WHERE fID=:id")
     public Friend getFriendInfo(String id);
 
+    @Query("SELECT * FROM Friend WHERE uIP=:ip")
+    public Friend getFriendInfoByIP(String ip);
+
     @Query("SELECT * FROM Friend")
     public List<Friend> getFriendList();
 
