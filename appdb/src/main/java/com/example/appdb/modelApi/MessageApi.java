@@ -145,15 +145,15 @@ public class MessageApi {
             @Override
             public void run() {
                 List<Message> messages=messageDao.getFriendMessages(m_FriendID);
-                if(messages!=null){
+                if(messages==null||messages.size()==0){
+                    callback.onExecute(false);
+                }else{
                     int result=messageDao.deleteMessagesFromList(messages);
                     if(result!=0){
                         callback.onExecute(true);
                     }else{
                         callback.onExecute(false);
                     }
-                }else{
-                    callback.onExecute(false);
                 }
 
             }
@@ -168,7 +168,9 @@ public class MessageApi {
             public void run() {
                 List<Message> messages=messageDao.getUnreadMessageList(m_FriendID);
                 List<Message> messages1=new ArrayList<>();
-                if(messages!=null){
+                if(messages==null||messages.size()==0){
+                    callback.onExecute(false);
+                }else{
                     for(Message m:messages){
                         m.setMReadStatus(1);
                         messages1.add(m);
@@ -179,8 +181,6 @@ public class MessageApi {
                     }else{
                         callback.onExecute(false);
                     }
-                }else{
-                    callback.onExecute(false);
                 }
 
             }
@@ -217,7 +217,9 @@ public class MessageApi {
             public void run() {
                 List<Message> messages=messageDao.getChatList();
                 List<ChatListInfo> list=new ArrayList<>();
-                if(messages!=null){
+                if(messages==null||messages.size()==0){
+                    callback.onChatList(false,null);
+                }else{
                     for(Message m:messages){
                         User u=friendDao.getFriendInfo(m.getMFriendID()).getFUser();
                         int unreadNum=messageDao.getUnreadMessageNum(m.getMFriendID());
@@ -228,8 +230,6 @@ public class MessageApi {
                         list.add(chatListInfo);
                     }
                     callback.onChatList(true,list);
-                }else{
-                    callback.onChatList(false,null);
                 }
             }
         });
@@ -244,10 +244,10 @@ public class MessageApi {
             @Override
             public void run() {
                 List<Message> messages=messageDao.getFriendMessageList(m_FriendID,num,fromNum);
-                if(messages!=null){
-                    callback.onFriendMessageList(true,messages);
-                }else{
+                if(messages==null||messages.size()==0){
                     callback.onFriendMessageList(false,null);
+                }else{
+                    callback.onFriendMessageList(true,messages);
                 }
             }
         });

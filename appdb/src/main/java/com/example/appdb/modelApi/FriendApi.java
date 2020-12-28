@@ -250,7 +250,7 @@ public class FriendApi{
            }
        });
     }
-    //编号：108；说明：获得好友信息（返回Friend对象）
+    //编号：111；说明：获得好友信息（返回Friend对象）
     public static void getFriendInfoByIP(final String f_IP, final FriendInfoCallback callback) {
         initFriendDao();
         mThreadPool.execute(new Runnable() {
